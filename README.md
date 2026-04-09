@@ -6,7 +6,4 @@ The administrator has a private space to validate new posts manage members and e
 
 ---------
 Members : 
-Hugo CHI
-Maxime AVOCAT
-Rayan ABOU EL NAY
-Soumeya HAMEUR
+Hugo CHI, Maxime AVOCAT, Rayan ABOU EL NAY, Soumeya HAMEUR
