@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Foundite — Lost & Found</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header>
+        <h1>Foundite</h1>
+        <p>Community-driven lost &amp; found</p>
+    </header>
+
+    <main>
+        <h2>Recently reported items</h2>
+
+        <div th:if="${items.isEmpty()}">
+            <p>No items reported yet.</p>
+        </div>
+
+        <ul class="items-list">
+            <li th:each="item : ${items}">
+                <a th:href="@{'/items/' + ${item.id}}">
+                    <strong th:text="${item.title}">Title</strong>
+                </a>
+                — <span th:text="${item.category}">Category</span>
+                <small th:text="${item.location}">Location</small>
+            </li>
+        </ul>
+    </main>
+
+    <footer>
+        <small>Foundite &copy; 2026 — Hugo, Maxime, Rayan, Soumeya</small>
+    </footer>
+</body>
+</html>
