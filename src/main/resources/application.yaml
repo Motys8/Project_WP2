@@ -1,3 +1,7 @@
 spring:
   application:
     name: foundite-app
+  security:
+    user:
+      name: admin
+      password: 1234
