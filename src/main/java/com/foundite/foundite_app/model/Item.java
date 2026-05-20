@@ -21,7 +21,8 @@ public class Item {
 
     private LocalDate foundDate;
 
-    // TODO: add image storage logic (file upload or URL)
+    private String location;
+
     private String imagePath;
 
     @Enumerated(EnumType.STRING)
@@ -46,6 +47,9 @@ public class Item {
 
     public LocalDate getFoundDate() { return foundDate; }
     public void setFoundDate(LocalDate foundDate) { this.foundDate = foundDate; }
+
+    public String getLocation() { return location; }
+    public void setLocation(String location) { this.location = location; }
 
     public String getImagePath() { return imagePath; }
     public void setImagePath(String imagePath) { this.imagePath = imagePath; }
