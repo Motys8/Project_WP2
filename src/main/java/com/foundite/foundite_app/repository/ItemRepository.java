@@ -1,9 +1,16 @@
-package com.foundite.repository;
+package com.foundite.foundite_app.repository;
 
-import com.foundite.model.Item;
+import com.foundite.foundite_app.model.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import java.util.List;
 
-@Repository
 public interface ItemRepository extends JpaRepository<Item, Long> {
+    List<Item> findByCategory(String category);
+    List<Item> findByStatus(Item.ItemStatus status);
+    List<Item> findByCategoryAndStatus(String category, Item.ItemStatus status);
+
+    @Query("SELECT i FROM Item i WHERE LOWER(i.title) LIKE LOWER(CONCAT('%', :keyword, '%')) OR LOWER(i.description) LIKE LOWER(CONCAT('%', :keyword, '%'))")
+    List<Item> searchByKeyword(@Param("keyword") String keyword);
 }

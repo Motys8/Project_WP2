@@ -1,7 +1,7 @@
-package com.foundite.security;
+package com.foundite.foundite_app.security;
 
-import com.foundite.model.User;
-import com.foundite.repository.UserRepository;
+import com.foundite.foundite_app.model.User;
+import com.foundite.foundite_app.repository.UserRepository;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

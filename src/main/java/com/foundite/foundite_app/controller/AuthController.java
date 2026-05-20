@@ -1,6 +1,6 @@
-package com.foundite.controller;
+package com.foundite.foundite_app.controller;
 
-import com.foundite.service.UserService;
+import com.foundite.foundite_app.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

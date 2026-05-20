@@ -1,7 +1,7 @@
-package com.foundite.model;
+package com.foundite.foundite_app.model;
 
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "items")
@@ -19,68 +19,41 @@ public class Item {
 
     private String category;
 
+    private LocalDate foundDate;
+
     private String location;
 
-    @Column(name = "created_at")
-    private LocalDateTime createdAt;
+    private String imagePath;
 
-    public Item() {
-        this.createdAt = LocalDateTime.now();
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private ItemStatus status;
+
+    public enum ItemStatus {
+        LOST, FOUND
     }
 
-    public Item(String title, String description, String category, String location) {
-        this.createdAt = LocalDateTime.now();
-        this.title = title;
-        this.description = description;
-        this.category = category;
-        this.location = location;
-    }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public Long getId() {
-        return id;
-    }
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
 
-    public String getTitle() {
-        return title;
-    }
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
 
-    public String getDescription() {
-        return description;
-    }
+    public String getCategory() { return category; }
+    public void setCategory(String category) { this.category = category; }
 
-    public String getCategory() {
-        return category;
-    }
+    public LocalDate getFoundDate() { return foundDate; }
+    public void setFoundDate(LocalDate foundDate) { this.foundDate = foundDate; }
 
-    public String getLocation() {
-        return location;
-    }
+    public String getLocation() { return location; }
+    public void setLocation(String location) { this.location = location; }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
+    public String getImagePath() { return imagePath; }
+    public void setImagePath(String imagePath) { this.imagePath = imagePath; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
+    public ItemStatus getStatus() { return status; }
+    public void setStatus(ItemStatus status) { this.status = status; }
 }

@@ -1,4 +1,4 @@
-package com.foundite.security;
+package com.foundite.foundite_app.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
