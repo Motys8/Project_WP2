@@ -1,16 +1,74 @@
-* { box-sizing: border-box; }
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 body {
-    font-family: system-ui, -apple-system, sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #222;
-    background: #fafafa;
+    font-family: 'Inter', sans-serif;
+    background-color: #F9FAFB;
+    color: #1F2937;
 }
-header, main, footer { max-width: 900px; margin: 0 auto; padding: 1.5rem; }
-header { border-bottom: 1px solid #ddd; }
-header h1 { margin: 0; color: #2563eb; }
-.items-list { list-style: none; padding: 0; }
-.items-list li { padding: 0.8rem; border-bottom: 1px solid #eee; }
-.items-list a { color: #2563eb; text-decoration: none; }
-.items-list a:hover { text-decoration: underline; }
-footer { border-top: 1px solid #ddd; margin-top: 2rem; text-align: center; color: #666; }
+
+/* Navbar */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #E5E7EB;
+}
+
+/* Perfect Button Centering */
+.btn-centered {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0.5rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.btn-centered:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Hero Section: Fully Rounded and Floating with mini margins */
+.hero-section {
+    background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+    border-radius: 2.5rem; /* Perfectly rounds all 4 corners (top and bottom) */
+    padding: 6rem 0;
+    box-shadow: 0 10px 25px rgba(79, 70, 229, 0.15);
+    margin: 0.5rem 0; /* Mini-mini margin top and bottom to complete the float effect */
+}
+
+/* Fix for the Hero Title to stay on one line */
+.hero-title {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    white-space: nowrap;
+    letter-spacing: -1px;
+}
+
+/* Fix for the Dropdown Arrow Overlap */
+.custom-select {
+    padding-right: 2.5rem !important;
+    background-position: right 1rem center !important;
+    cursor: pointer;
+}
+
+/* Cards */
+.card {
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background: white;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
+}
+
+.empty-state {
+    background: white;
+    border-radius: 1.5rem;
+    border: 2px dashed #D1D5DB;
+    padding: 4rem 2rem;
+}
