@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login — Foundite</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header>
+    <h1><a th:href="@{/}">Foundite</a></h1>
+</header>
+<main>
+    <h2>Log in</h2>
+
+    <div th:if="${param.error}" style="color:red;">Invalid username or password.</div>
+    <div th:if="${param.logout}" style="color:green;">You have been logged out.</div>
+    <div th:if="${param.registered}" style="color:green;">Registration successful! Please log in.</div>
+
+    <form th:action="@{/login}" method="post">
+        <p>
+            <label for="username">Username</label><br>
+            <input type="text" id="username" name="username" required>
+        </p>
+        <p>
+            <label for="password">Password</label><br>
+            <input type="password" id="password" name="password" required>
+        </p>
+        <p>
+            <button type="submit">Log in</button>
+        </p>
+    </form>
+
+    <p>No account? <a th:href="@{/register}">Register here</a></p>
+</main>
+</body>
+</html>
