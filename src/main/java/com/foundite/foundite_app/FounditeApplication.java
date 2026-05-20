@@ -4,10 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FounditeAppApplication {
+public class FounditeApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(FounditeAppApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(FounditeApplication.class, args);
+    }
 }
