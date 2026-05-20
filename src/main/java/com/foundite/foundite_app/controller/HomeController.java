@@ -8,7 +8,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String home() {
-        // Redirige automatiquement la page d'accueil vers la belle galerie !
+        // Redirige localhost:8080 vers localhost:8080/items
         return "redirect:/items";
     }
 }

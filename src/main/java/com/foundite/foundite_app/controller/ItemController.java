@@ -13,20 +13,10 @@ import java.util.Map;
 @RequestMapping("/items")
 public class ItemController {
 
-    // ---------------------------------------------------------
-    // VRAI CODE (À activer quand le travail de la BDD sera fini)
-    // ---------------------------------------------------------
-    // @Autowired
-    // private ItemRepository itemRepository;
-
     @GetMapping
     public String browseItems(Model model) {
         
-        // --- 1. LE VRAI CODE FUTUR (Actuellement en pause) ---
-        // List<Item> items = itemRepository.findAll();
-        // model.addAttribute("items", items);
-
-        // --- 2. LE MOCK ACTUEL (Pour que ton design s'affiche) ---
+        // Tes fausses données pour voir le design de tes cartes Bootstrap
         List<Map<String, String>> itemsList = List.of(
             Map.of("title", "Blue Nike Backpack", "category", "Bags", "location", "Cafeteria", "date", "May 19", "icon", "bi-backpack"),
             Map.of("title", "Car Keys (Renault)", "category", "Keys", "location", "North Parking", "date", "May 18", "icon", "bi-key"),
@@ -44,7 +34,7 @@ public class ItemController {
 
     @PostMapping("/report")
     public String submitReportedItem() {
-        // Plus tard, on ajoutera ici : itemRepository.save(newItem);
+        // Le bouton "Publier" renvoie simplement à la galerie pour le moment
         return "redirect:/items";
     }
 }
