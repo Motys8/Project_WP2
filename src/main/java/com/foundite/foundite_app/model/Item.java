@@ -2,6 +2,7 @@ package com.foundite.foundite_app.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "items")
@@ -24,6 +25,13 @@ public class Item {
     private String location;
 
     private String imagePath;
+
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private LocalDateTime createdAt = LocalDateTime.now();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "posted_by_id")
+    private User postedBy;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
@@ -53,6 +61,12 @@ public class Item {
 
     public String getImagePath() { return imagePath; }
     public void setImagePath(String imagePath) { this.imagePath = imagePath; }
+
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+
+    public User getPostedBy() { return postedBy; }
+    public void setPostedBy(User postedBy) { this.postedBy = postedBy; }
 
     public ItemStatus getStatus() { return status; }
     public void setStatus(ItemStatus status) { this.status = status; }

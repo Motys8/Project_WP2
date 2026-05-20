@@ -2,6 +2,7 @@ package com.foundite.foundite_app.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -19,7 +20,10 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/", "/register", "/login", "/css/**", "/items/**").permitAll()
+                .requestMatchers("/", "/register", "/login", "/css/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/items", "/items/{id}").permitAll()
+                .requestMatchers("/items/new", "/items/{id}/edit").authenticated()
+                .requestMatchers(HttpMethod.POST, "/items", "/items/{id}").authenticated()
                 .requestMatchers("/admin/**").hasRole("ADMIN")
                 .requestMatchers("/profile/**").authenticated()
                 .anyRequest().authenticated()
