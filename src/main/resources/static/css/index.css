@@ -68,6 +68,39 @@ body {
   margin: 0;
 }
 
+.hero-actions {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.hero-box .btn {
+  font-weight: 700;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.btn-outline-light {
+  border: 2px solid white !important;
+  color: white !important;
+}
+
+.btn-outline-light:hover {
+  background-color: white !important;
+  color: #5e5970 !important;
+}
+
+.btn-light {
+  background-color: white !important;
+  color: #5e5970 !important;
+  border: 2px solid white !important;
+}
+
+.btn-light:hover {
+  background-color: transparent !important;
+  color: white !important;
+}
+
 footer {
   background-color: #444444;
   color: rgba(255, 255, 255, 0.7);
