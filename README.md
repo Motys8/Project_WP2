@@ -33,6 +33,6 @@ To define the core features of **Foundite**, we have established the following s
 
 ### 3. Moderation and Validation (The "Admin" Story)
 **As an** administrator,  
-**I want to** review, edit, or delete listings and manage user accounts,  
+**I want to** review, edit, or delete listings and manage listings,  
 **So that** the platform remains clean, secure, and free of inappropriate content.  
 * *Key features:* Admin dashboard, Spring Security (Role-based access), CRUD operations.
