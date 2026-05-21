@@ -48,13 +48,17 @@
         <div class="profile-header">
           <div class="profile-avatar">
             <span
-              th:text="${username != null ? #strings.toUpperCase(#strings.left(username, 1)) : '?'}"
+              th:text="${username != null ? #strings.toUpperCase(#strings.substring(username, 0, 1)) : '?'}"
               >U</span
             >
           </div>
           <div class="profile-meta">
             <h1 class="profile-username" th:text="${username}">username</h1>
-            <span class="profile-badge">Member</span>
+            <span
+              class="profile-badge"
+              th:text="${role != null ? role : 'Member'}"
+              >Member</span
+            >
           </div>
         </div>
       </div>
@@ -128,7 +132,7 @@
                 >
               </li>
             </ul>
-            <div class="mt-4 d-flex flex-column gap-2">
+            <div class="mt-4">
               <a
                 th:href="@{/logout}"
                 class="btn btn-outline-danger btn-sm w-100"
@@ -178,6 +182,20 @@
                     title="Edit"
                     >✏️</a
                   >
+                  <form
+                    th:action="@{/items/{id}/delete(id=${item.id})}"
+                    method="post"
+                    style="display: inline"
+                  >
+                    <button
+                      type="submit"
+                      class="btn-icon btn-icon-delete"
+                      title="Delete"
+                      onclick="return confirm('Delete this item?');"
+                    >
+                      🗑
+                    </button>
+                  </form>
                 </div>
               </div>
             </div>
@@ -187,7 +205,7 @@
     </main>
 
     <footer class="py-4 text-center mt-5">
-      <p class="mb-0">&copy; 2025 Foundite</p>
+      <p class="mb-0">&copy; 2026 Foundite</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

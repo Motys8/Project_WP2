@@ -1,6 +1,7 @@
 package com.foundite.foundite_app.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -25,6 +26,10 @@ public class Item {
     private String location;
 
     private String imagePath;
+
+    @NotBlank(message = "Phone number is required")
+    @Column(name = "phone_number", length = 20)
+    private String phoneNumber;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
@@ -61,6 +66,9 @@ public class Item {
 
     public String getImagePath() { return imagePath; }
     public void setImagePath(String imagePath) { this.imagePath = imagePath; }
+
+    public String getPhoneNumber() { return phoneNumber; }
+    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
 
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }

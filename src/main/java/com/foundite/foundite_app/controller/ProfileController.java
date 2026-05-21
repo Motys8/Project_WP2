@@ -31,5 +31,5 @@ public class ProfileController {
     model.addAttribute("userItems", itemService.findByUser(user));
     model.addAttribute("itemCount", itemService.countByUser(user));
     return "profile";
-}
+    }
 }

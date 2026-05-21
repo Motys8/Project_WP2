@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Foundite – Find</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link th:href="@{/css/index.css}" rel="stylesheet" />
+    <link th:href="@{/css/items.css}" rel="stylesheet" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-foundite px-4">
+      <a class="navbar-brand" th:href="@{/}">FOUNDITE</a>
+      <button
+        class="navbar-toggler ms-auto"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navMenu"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" th:href="@{/}">Home</a></li>
+          <li class="nav-item">
+            <a class="nav-link active" th:href="@{/items}">Find</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/items/new}">Add</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/profile}">Profile</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="items-header">
+      <div class="container">
+        <h1 class="items-title">BROWSE LISTINGS</h1>
+        <p class="items-subtitle">
+          Search through found and lost items reported by the community
+        </p>
+      </div>
+    </div>
+
+    <div class="filters-bar">
+      <div class="container">
+        <form method="get" th:action="@{/items}" class="filters-form">
+          <input
+            type="text"
+            name="search"
+            class="filter-input"
+            placeholder="Search by title or description..."
+            th:value="${param.search}"
+          />
+          <select name="category" class="filter-select">
+            <option value="">All Categories</option>
+            <option
+              value="Electronics"
+              th:selected="${param.category == 'Electronics'}"
+            >
+              Electronics
+            </option>
+            <option
+              value="Clothing"
+              th:selected="${param.category == 'Clothing'}"
+            >
+              Clothing
+            </option>
+            <option value="Bags" th:selected="${param.category == 'Bags'}">
+              Bags
+            </option>
+            <option
+              value="Jewelry"
+              th:selected="${param.category == 'Jewelry'}"
+            >
+              Jewelry
+            </option>
+            <option value="Keys" th:selected="${param.category == 'Keys'}">
+              Keys
+            </option>
+            <option
+              value="Documents"
+              th:selected="${param.category == 'Documents'}"
+            >
+              Documents
+            </option>
+            <option value="Other" th:selected="${param.category == 'Other'}">
+              Other
+            </option>
+          </select>
+          <button type="submit" class="filter-btn">SEARCH</button>
+          <a th:href="@{/items}" class="filter-reset">Reset</a>
+        </form>
+      </div>
+    </div>
+
+    <main class="container items-main">
+      <div
+        th:if="${items == null or #lists.isEmpty(items)}"
+        class="empty-items"
+      >
+        <p class="empty-items-text">No items found.</p>
+        <a th:href="@{/items/new}" class="btn-foundite">POST AN ITEM</a>
+      </div>
+
+      <div
+        th:if="${items != null and not #lists.isEmpty(items)}"
+        class="items-grid"
+      >
+        <div th:each="item : ${items}" class="item-card">
+          <a th:href="@{/items/{id}(id=${item.id})}" class="item-card-link">
+            <div class="item-card-img-wrap">
+              <img
+                th:if="${item.imagePath != null and !item.imagePath.isEmpty()}"
+                th:src="${item.imagePath}"
+                alt="Item image"
+                class="item-card-img"
+              />
+              <div
+                th:if="${item.imagePath == null or item.imagePath.isEmpty()}"
+                class="item-card-img-placeholder"
+              >
+                <span>No Image</span>
+              </div>
+
+              <span
+                class="item-status-badge"
+                th:classappend="${item.status != null and item.status.name() == 'LOST'} ? 'badge-lost' : 'badge-found'"
+                th:text="${item.status != null ? item.status.name() : 'FOUND'}"
+                >FOUND</span
+              >
+            </div>
+
+            <div class="item-card-body">
+              <span
+                class="item-card-category"
+                th:text="${item.category != null ? item.category : 'Uncategorized'}"
+                >Category</span
+              >
+              <h3 class="item-card-title" th:text="${item.title}">
+                Item Title
+              </h3>
+              <p
+                class="item-card-location"
+                th:text="${item.location != null ? item.location : '—'}"
+              >
+                Location
+              </p>
+              <p
+                class="item-card-date"
+                th:text="${item.foundDate != null ? item.foundDate : '—'}"
+              >
+                Date
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <footer class="py-4 text-center mt-5">
+      <p class="mb-0">&copy; 2026 Foundite</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

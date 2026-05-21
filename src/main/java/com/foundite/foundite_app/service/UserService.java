@@ -50,7 +50,6 @@ public User registerNewUser(String username, String email, String rawPassword, S
 
 
 
-// Le mot de passe est hashe avec BCrypt avant d'etre stocke en BDD
 
         String hashedPassword = passwordEncoder.encode(rawPassword);
 
